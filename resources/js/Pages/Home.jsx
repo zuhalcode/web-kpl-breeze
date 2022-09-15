@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AppLayout from "@/Layouts/AppLayout";
 import Login from "./Auth/Login";
-import ContainerCircle from "@/Components/ContainerCircle";
 import RegisterMessage from "@/Components/RegisterMessage";
 import LoginMessage from "@/Components/LoginMessage";
 import Register from "./Auth/Register";

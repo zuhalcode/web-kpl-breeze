@@ -11,16 +11,15 @@ class MailNotify extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $email;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct()
     {
-        $this->email = $email;
+
     }
 
     /**
@@ -30,6 +29,6 @@ class MailNotify extends Mailable
      */
     public function build()
     {
-        return $this->subject('Please click link below to reset your password')->markdown('emails');
+        return $this->view('emails.test');
     }
 }

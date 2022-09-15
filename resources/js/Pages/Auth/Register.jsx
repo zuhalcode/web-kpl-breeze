@@ -14,6 +14,8 @@ export default function Register({ auth }) {
                 <h2 className="text-3xl font-bold text-[#444] mb-[10px]">
                     Sign Up
                 </h2>
+
+                <input type="hidden" name="_token" value={csrf_token} />
                 <FormInput placeholder={"Username"} svg={"user"} />
                 <FormInput placeholder={"Email"} svg={"user"} />
                 <FormInput placeholder={"Password"} svg={"lock"} />
@@ -23,5 +25,5 @@ export default function Register({ auth }) {
                 </button>
             </form>
         </>
-    );
+    )
 }

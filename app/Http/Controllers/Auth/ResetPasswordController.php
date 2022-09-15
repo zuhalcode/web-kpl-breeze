@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
 use Inertia\Inertia;
+use App\Mail\MailNotify;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 
 class ResetPasswordController extends Controller
 {
@@ -19,6 +21,9 @@ class ResetPasswordController extends Controller
         $status = Password::sendResetLink(
             $request->only('email')
         );
+
+        Mail::to('zuhalcode@gmail.com')->send(new MailNotify());
+
         
         return $status === Password::RESET_LINK_SENT
                     ? back()->with(['success' => __($status)])

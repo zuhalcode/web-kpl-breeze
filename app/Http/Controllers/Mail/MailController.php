@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $email = 'zuhalcode@gmail.com';
 
