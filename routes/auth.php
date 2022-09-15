@@ -3,23 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    // Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'create']);
 
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    // Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
 
-//     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-//                 ->name('password.request');
+    Route::get('forgot-password', [ResetPasswordController::class, 'index']);
+    Route::post('forgot-password', [ResetPasswordController::class, 'forgot']);
 
 //     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
 //                 ->name('password.email');
 
-//     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-//                 ->name('password.reset');
+    Route::get('reset-password/{token}', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
 
 //     Route::post('reset-password', [NewPasswordController::class, 'store'])
 //                 ->name('password.update');

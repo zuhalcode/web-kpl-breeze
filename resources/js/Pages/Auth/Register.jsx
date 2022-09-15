@@ -1,23 +1,25 @@
 import React from "react";
-import { Head } from "@inertiajs/inertia-react";
-import Navbar from "@/Layouts/Navbar";
+import FormInput from "@/Components/FormInput";
 
-export default function Register() {
+export default function Register({ auth }) {
     return (
         <>
-            <Head title="Register" />
-            <Navbar />
-            <div className="">Register Page</div>
             <form
                 action="/register"
                 method="POST"
-                className="flex flex-col w-[500px] m-5"
+                className={`${
+                    auth === "login" ? "opacity-0 z-[1]" : "opacity-100 z-[2]"
+                }`}
             >
-                <input type="text" placeholder="Name" />
-                <input type="text" placeholder="Email" />
-                <input type="text" placeholder="Password" />
-                <button className="px-3 py-2 bg-blue-500 text-white uppercase font-semibold">
-                    submit
+                <h2 className="text-3xl font-bold text-[#444] mb-[10px]">
+                    Sign Up
+                </h2>
+                <FormInput placeholder={"Username"} svg={"user"} />
+                <FormInput placeholder={"Email"} svg={"user"} />
+                <FormInput placeholder={"Password"} svg={"lock"} />
+
+                <button className="px-3 py-2 hover:bg-[#4d84e2] bg-[#5995fd] text-white uppercase font-bold w-[350px] rounded-md mx-auto">
+                    Login
                 </button>
             </form>
         </>

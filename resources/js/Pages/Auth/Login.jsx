@@ -1,28 +1,34 @@
 import React from "react";
-import { Head } from "@inertiajs/inertia-react";
-import Navbar from "@/Layouts/Navbar";
+import FormInput from "@/Components/FormInput";
 
-export default function Login() {
-    const handleOnsubmit = () => {
-        console.log("zuhal", csrf_token);
-    };
+export default function Login({ auth }) {
     return (
         <>
-            <Head title="Login" />
-            <Navbar />
-            <div className="">Login Page</div>
             <form
                 action="/login"
                 method="POST"
-                className="flex flex-col w-[500px] m-5"
-                onSubmit={handleOnsubmit}
+                className={`${
+                    auth === "login" ? "opacity-100 z-[2]" : "opacity-0 z-[1]"
+                }`}
             >
+                <h2 className="text-3xl font-bold text-[#444] mb-[10px]">
+                    Sign In
+                </h2>
+
                 <input type="hidden" name="_token" value={csrf_token} />
-                <input type="text" placeholder="Email" name="email" />
-                <input type="text" placeholder="Password" name="password" />
-                <button className="px-3 py-2 bg-blue-500 text-white uppercase font-semibold">
-                    submit
+                <FormInput placeholder={"Email"} svg="user" />
+                <FormInput placeholder={"Password"} svg="lock" />
+
+                <button className="px-3 py-2 hover:bg-[#4d84e2] bg-[#5995fd] text-white uppercase font-bold w-[350px] rounded-md mx-auto">
+                    Login
                 </button>
+
+                <a
+                    href="forgot-password"
+                    className="text-blue-600 hover:underline mx-auto mt-1"
+                >
+                    Forgot Password?
+                </a>
             </form>
         </>
     );

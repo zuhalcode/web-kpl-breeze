@@ -43,6 +43,11 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            'email' => function () use ($request) {
+                return [
+                    'success' => $request->session()->get('success'),
+                ];
+            },
         ]);
     }
 }

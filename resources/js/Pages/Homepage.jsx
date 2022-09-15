@@ -1,26 +1,23 @@
 import React from "react";
 import { Link, Head } from "@inertiajs/inertia-react";
 import Navbar from "@/Layouts/Navbar";
+import { capitalize } from "@/Utils/function";
 
 export default function Homepage(props) {
-    const capitalize = (string) => {
-        return string
-            .toLowerCase()
-            .split(" ")
-            .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
-            .join(" ");
-    };
     return (
         <>
             <Head title="Homepage" />
-            <Navbar />
-            <div className="">Welcome, {capitalize(props.auth.user.name)}</div>
-            <form action="/logout" method="get">
-                <input type="hidden" name="_token" value={csrf_token} />
-                <button className="px-3 py-2 bg-blue-500 text-white uppercase">
-                    Logout
-                </button>
-            </form>
+            <div className="mx-auto w-1/2 mt-10 space-y-4">
+                <div className="text-center font-bold text-2xl">
+                    Welcome, {capitalize(props.auth.user.name)}
+                </div>
+                <form action="/logout" method="get">
+                    <input type="hidden" name="_token" value={csrf_token} />
+                    <button className=" bg-blue-500 rounded-md text-white w-[130px] h-[41px] font-semibold text-base ">
+                        Logout
+                    </button>
+                </form>
+            </div>
         </>
     );
 }

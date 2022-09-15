@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Mail\MailController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -24,18 +25,7 @@ Route::get('/home', function() {
     return Inertia::render('Homepage');
 })->middleware('auth')->name('home');
 
-// Route::controller(UserController::class)->group(fn()=>[
-//     Route::get('/login', 'loginPage')->name('login'),
-//     Route::post('/login', 'login'),
+Route::get('/send', [MailController::class, 'index']);
 
-//     Route::get('/register', 'registerPage'),
-//     Route::post('/register', 'register'),
-
-//     Route::post('/logout', 'logout'),
-// ]);
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
