@@ -22,9 +22,6 @@ class ResetPasswordController extends Controller
             $request->only('email')
         );
 
-        Mail::to('zuhalcode@gmail.com')->send(new MailNotify());
-
-        
         return $status === Password::RESET_LINK_SENT
                     ? back()->with(['success' => __($status)])
                     : back()->withErrors(['error' => __($status)]);
@@ -32,6 +29,6 @@ class ResetPasswordController extends Controller
 
     public function resetPassword(Request $request)
     {
-        dd('ui reset');
+        return Inertia::render('Auth/NewPassword', ['email' => $request->email]);
     }
 }

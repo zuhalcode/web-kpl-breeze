@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 
@@ -20,10 +21,11 @@ Route::middleware('guest')->group(function () {
 //     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
 //                 ->name('password.email');
 
-    Route::get('reset-password/{token}', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
+    Route::get('reset-password/{token}', [ResetPasswordController::class, 'resetPassword'])
+            ->name('password.reset');
 
-//     Route::post('reset-password', [NewPasswordController::class, 'store'])
-//                 ->name('password.update');
+    Route::post('confirm-password', [NewPasswordController::class, 'store'])
+            ->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {

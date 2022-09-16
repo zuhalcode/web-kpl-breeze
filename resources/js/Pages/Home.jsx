@@ -5,8 +5,9 @@ import RegisterMessage from "@/Components/RegisterMessage";
 import LoginMessage from "@/Components/LoginMessage";
 import Register from "./Auth/Register";
 
-export default function Home() {
+export default function Home(props) {
     const [state, setState] = useState({ auth: "login" });
+    console.log(props);
 
     const clickOnSignUp = () => {
         const sign_up_btn = document.querySelector("#sign-up-btn");
@@ -34,7 +35,7 @@ export default function Home() {
             <div className="absolute w-full h-full top-0 left-0">
                 <div className="absolute top-1/2 left-[75%] w-1/2 transition-all duration-1000 ease-in-out grid z-[5] signin-signup">
                     {/* Login Form */}
-                    <Login auth={state.auth} />
+                    <Login auth={state.auth} notify={props.email.success} />
                     {/* End Login Form */}
 
                     {/* Register Form */}

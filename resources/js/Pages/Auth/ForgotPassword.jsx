@@ -1,13 +1,12 @@
 import React from "react";
 import { Head } from "@inertiajs/inertia-react";
-import Navbar from "@/Layouts/Navbar";
 import FormInput from "@/Components/FormInput";
 import SubmitButton from "@/Components/SubmitButton";
 
 export default function ForgotPassword(props) {
     return (
         <div>
-            <Head title="Register" />
+            <Head title="Forgot Password" />
             <div className="w-1/2 px-5 py-3 flex flex-col items-center border mx-auto mt-5 rounded-md bg-gray-200">
                 <div className="font-bold text-2xl">Reset Password Page</div>
                 <p
