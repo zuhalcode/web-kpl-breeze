@@ -35,7 +35,10 @@ export default function Home(props) {
             <div className="absolute w-full h-full top-0 left-0">
                 <div className="absolute top-1/2 left-[75%] w-1/2 transition-all duration-1000 ease-in-out grid z-[5] signin-signup">
                     {/* Login Form */}
-                    <Login auth={state.auth} notify={props.email.success} />
+                    <Login
+                        auth={state.auth}
+                        notify={props.email.success || props.status}
+                    />
                     {/* End Login Form */}
 
                     {/* Register Form */}

@@ -18,20 +18,20 @@ class NewPasswordController extends Controller
         $status = Password::reset(
             $request->only('email', 'password', 'new_password', 'token'),
             function ($user) use ($request) {
-                $user->forceFill([
-                    'password' => Hash::make($request->password),
-                    'remember_token' => Str::random(60),
-                    ])->save();
-                event(new PasswordReset($user));
+                if(Hash::make($request->password) === $user->password) {
+                    $user->forceFill([
+                        'password' => Hash::make($request->new_password),
+                        'remember_token' => Str::random(60),
+                        ])->save();
+                    event(new PasswordReset($user));
+                    return redirect('/')->with('status', 'Reset password successfull, please login');
+                }
             }
         );
 
-        if ($status == Password::PASSWORD_RESET) {
-            return redirect('/')->with('error', __($status));
-        }
+        // if ($status == Password::PASSWORD_RESET) {
+        // }
 
-        throw ValidationException::withMessages([
-            'email' => [trans($status)],
-        ]);
+        return redirect('/')->with('status', trans($status));
     }
 }

@@ -13,7 +13,7 @@ export default function ResetPassword(props) {
                     Confirm Your New Password
                 </div>
                 <p className={` text-red-500 font-semibold`}>
-                    {props.errors.email}
+                    {props.status || props.errors.email}
                 </p>
                 <form
                     action="/confirm-password"
@@ -21,11 +21,7 @@ export default function ResetPassword(props) {
                     className="flex flex-col w-[500px] mb-2"
                 >
                     <input type="hidden" name="_token" value={csrf_token} />
-                    <input
-                        type="hidden"
-                        name="token"
-                        value="2a1a52379dfe948f954e2ebacf95ad83873a62b9047ac0e544e80c59a48a1261"
-                    />
+                    <input type="hidden" name="token" value={props.token} />
                     <input type="hidden" name="email" value={props.email} />
 
                     <FormInput

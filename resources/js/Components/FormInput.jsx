@@ -1,12 +1,6 @@
 import React from "react";
 
-export default function FormInput({
-    svg,
-    placeholder,
-    type = "text",
-    name,
-    attr,
-}) {
+export default function FormInput({ svg, placeholder, type = "text", name }) {
     const lockSVG = (
         <svg
             className="w-5 h-5 text-gray-500"
@@ -35,12 +29,15 @@ export default function FormInput({
             ></path>
         </svg>
     );
+
+    const svgPicker = (svg) => (svg === "user" ? userSVG : lockSVG);
+
     return (
         <>
             <div>
                 <div className=" w-[350px] my-[10px] h-[55px] rounded-md grid px-1 relative ">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
-                        {svg === "user" ? userSVG : lockSVG}
+                        {svgPicker(svg)}
                     </div>
                     <input
                         type={type}
@@ -49,7 +46,6 @@ export default function FormInput({
                         placeholder={placeholder}
                         autoComplete="none"
                         required
-                        {...attr}
                     />
                 </div>
             </div>

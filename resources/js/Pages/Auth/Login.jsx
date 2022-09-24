@@ -15,7 +15,13 @@ export default function Login({ auth, notify }, props) {
                 <h2 className="text-3xl font-bold text-[#444] mb-[10px]">
                     Sign In
                 </h2>
-                <p className={`font-semibold text-green-600 text-[18px]`}>
+                <p
+                    className={`font-semibold ${
+                        notify && notify.split(" ").includes("token")
+                            ? "text-red-500"
+                            : "text-green-600"
+                    }  text-[18px] text-center w-[400px]`}
+                >
                     {notify}
                 </p>
 

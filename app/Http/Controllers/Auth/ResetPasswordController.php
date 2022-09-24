@@ -27,8 +27,11 @@ class ResetPasswordController extends Controller
                     : back()->withErrors(['error' => __($status)]);
     }
 
-    public function resetPassword(Request $request)
+    public function resetPassword(Request $request, $token)
     {
-        return Inertia::render('Auth/NewPassword', ['email' => $request->email]);
+        return Inertia::render('Auth/NewPassword', [
+            'email' => $request->email,
+            'token' => $token
+        ]);
     }
 }

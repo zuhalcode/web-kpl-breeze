@@ -1,5 +1,6 @@
 import React from "react";
 import FormInput from "@/Components/FormInput";
+import InputOnlyNumber from "@/Components/InputOnlyNumber";
 
 export default function Register({ auth }) {
     return (
@@ -17,6 +18,7 @@ export default function Register({ auth }) {
 
                 <input type="hidden" name="_token" value={csrf_token} />
                 <FormInput placeholder={"Name"} svg={"user"} />
+                <InputOnlyNumber placeholder="Phone" />
                 <FormInput placeholder={"Email"} svg={"user"} type="email" />
                 <FormInput
                     placeholder={"Password"}
