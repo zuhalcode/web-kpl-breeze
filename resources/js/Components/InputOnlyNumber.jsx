@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export default function InputOnlyNumber({ name, placeholder }) {
     const [phoneValue, setPhoneValue] = useState("");
@@ -18,11 +18,10 @@ export default function InputOnlyNumber({ name, placeholder }) {
                     <div className="flex space-x-3">
                         <select
                             className=" rounded-md text-[19px] border-none pr-10 font-semibold bg-gray-100"
+                            name="country_code"
                             onChange={(e) => selectOnChange(e)}
                         >
-                            <option className="" value="+62">
-                                &#x1F1EE;&#x1F1E9;
-                            </option>
+                            <option value="+62">&#x1F1EE;&#x1F1E9;</option>
                             <option value="+91">&#x1F1EE;&#x1F1F3;</option>
                             <option value="+1">&#x1F1FA;&#x1F1F8;</option>
                         </select>
@@ -32,7 +31,6 @@ export default function InputOnlyNumber({ name, placeholder }) {
                             className="w-[50px] rounded-md border-none text-center text-base font-semibold bg-gray-100"
                             value={selectValue}
                             disabled
-                            onChange={(e) => selectOnChange(e)}
                         />
                     </div>
                     <input

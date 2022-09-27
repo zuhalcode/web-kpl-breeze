@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function FormInput({ svg, placeholder, type = "text", name }) {
+export default function FormInput({
+    svg,
+    placeholder,
+    type = "text",
+    name,
+    handleOnChange = () => {},
+}) {
     const lockSVG = (
         <svg
             className="w-5 h-5 text-gray-500"
@@ -44,8 +50,9 @@ export default function FormInput({ svg, placeholder, type = "text", name }) {
                         name={name || placeholder.toLowerCase()}
                         className="w-full rounded-md border-none pl-10 pr-12 text-base font-semibold bg-gray-100"
                         placeholder={placeholder}
-                        autoComplete="none"
+                        autoComplete={`${type === "password" ? "off" : "on"}`}
                         required
+                        onChange={(e) => handleOnChange(e)}
                     />
                 </div>
             </div>
